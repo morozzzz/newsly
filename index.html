@@ -1,0 +1,100 @@
+<!doctype <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Newsly</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> -->
+
+    <link rel="stylesheet" href="src/fonts/fontawesome-free-5.5.0-web/css/all.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="src/css/index.css"/>
+    <script src="dist/bundle.js" defer></script>
+</head>
+<body>
+    <div id="main-page">    
+        <div class="content">
+            <div class="header-spacer"></div>
+            <header>
+                <h1>NEWSLY</h1>
+                <div class="options-humb humburger"><i class="fas fa-bars"></i></div>
+                <div class="sources-humb humburger"><i class="fas fa-th"></i></div>
+            </header>
+            <div class="main-body">
+                <aside class="search-options">                
+                    <div id="categories" class="option-list-container">
+                        <div class="label selected-categoty">Select Category</div>
+                        <div class="option-list">
+                            <ul class="category-selector hidden">
+                                <li id="unselected-category" class ='category-selector-item'>--none--</li>
+                                <template id='category-item-template'>
+                                    <li class ='category-selector-item'></li>
+                                </template>
+                            </ul>                        
+                        </div>
+                    </div>
+                    <div id="countries" class="option-list-container">
+                        <div class="label selected-country">Select Country</div>
+                        <div class="option-list">
+                            <ul class="county-selector hidden">
+                                <li id="unselected-country" class ='country-selector-item'>--none--</li>
+                                <template id='country-item-template'>
+                                    <li class ='country-selector-item'></li>
+                                </template>
+                            </ul>                        
+                        </div>
+                    </div>
+                    <div class="key-words-container">
+                        <input id='key-word' placeholder="Enter the key word">                     
+                    </div>
+                    <button class="get-news">GET NEWS</button>
+                </aside>                                
+                    <main>
+                        <div class="main-wrapper">
+                        <div class="news-container"></div>                    
+                        <template id="article-template">
+                            <div class="article-wrapper">
+                                <article>
+                                    <h2></h2>
+                                    <div class="primary-data">
+                                        <img src="">
+                                        <div class="description"></div>
+                                    </div>
+                                    <div class="secondary-data">
+                                        <div class="meta-data">
+                                            <div class="author-container meta-container">
+                                                <div class="author-label meta-label">Author:</div>
+                                                <div class="author"></div>
+                                            </div>
+                                            <div class="date-container meta-container">
+                                                <div class="date-label meta-label">Date:</div>
+                                                <div class="date"></div>
+                                            </div>
+                                        </div>
+                                        <a class="news-link" href="" target="_blank">Read Here</a>
+                                    </div>                                                    
+                                    </article>
+                                </div>
+                        </template>   
+                    </div>           
+                    </main>
+                <aside class="right-sidebar">
+                    <button class="sources-button">GET NEWS BY SOURCE</button>
+                </aside>
+            </div> 
+        </div>       
+        <footer>
+            <span>Made using </span>
+            <a class="newsapi-link" href="https://newsapi.org/" target="_blank">NEWS API</a>            
+        </footer>
+    </div>
+    <div class="sources-modal hidden">
+        <div class="button-spacer"></div>
+        <button class="close-modal-button">CLOSE</button>
+        <div class="sources-container">
+            <template id="source-item-template">
+                <div class="source-item"></div>
+            </template>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+  "name": "newsly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "generate-package-json-webpack-plugin": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "webpack": "^4.25.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack -p",
+    "watch": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morozzzz/newsly-src.git"
+  },
+  "author": "morozzzz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/morozzzz/newsly-src/issues"
+  },
+  "homepage": "https://github.com/morozzzz/newsly-src#readme"
+}
