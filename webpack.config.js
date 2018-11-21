@@ -5,9 +5,19 @@ module.exports = {
         path: __dirname + '/dist',
         filename: 'bundle.js'
     },
-    module: {},
-    resolve: {
-        extensions: ['*', '.js', '.jsx']
+    module: {
+        rules: [
+            {
+                test: /\.m?js$/,
+                exclude: /(node_modules|bower_components)/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env'],
+                    }
+                }
+            }
+        ]
     },
     devtool: 'eval-source-map',
 };

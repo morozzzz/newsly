@@ -1,9 +1,13 @@
+import '@babel/polyfill';
+import './template';
+import 'isomorphic-fetch';
 import { countries, categories, apiKey, baseUrl, defaultLanguage, dateOptions }  from './constants';
 
 const state = {
     category: '',
     country: '',
-    keyWord: ''
+    keyWord: '',
+    clicks: 0,    
 };
 
 const getData = ({ endPoint = 'top-headlines', category, country, source, keyWord }) => {
@@ -15,20 +19,32 @@ const getData = ({ endPoint = 'top-headlines', category, country, source, keyWor
         url = `${baseUrl}/${endPoint}?sources=${source}&apiKey=${apiKey}`;
     } else {
         url = `${baseUrl}/${endPoint}?country=${country}&category=${category}&q=${keyWord}&language=${defaultLanguage}&apiKey=${apiKey}`;
-    }
-
-    const request = new Request(url);
-    
+    }   
+     
     return new Promise((resolve, reject) => {
-        fetch(request)
+        
+        fetch(url)
             .then((response) => response.json())
             .then((data) => {                
                 data.status === 'ok' ? resolve(data) : reject(data.message);
             })
             .catch((message) => {
-                throw Error(message);
+                throw Error(message);             
+            })
+            .finally(() => {
+                if (state.clicks > 1) {
+                    showCat();
+                }
+                state.clicks = 0;                
             });
     }); 
+};
+
+const showCat = () => {
+    cat.classList.toggle('hidden-cat');
+    setTimeout(() => {
+        cat.classList.toggle('hidden-cat');        
+    }, 1500);
 };
 
 const getSources = () => {       
@@ -140,36 +156,13 @@ const showOrHideSourcesModal = () => {
     sourcesModal.scrollTop = 0;
 };
 
-const getNewsBySource = (source) => {
-    switchLoadingIndication();
-    
-    getData({ source })
-        .then((data) => {
-            showNews(data.articles);        
-            switchLoadingIndication();                         
-        }).catch((message) => {
-            throw Error(message);
-        });
-};
-
-const handleSourceItem = () => {
+const handleSourceItem = (event) => {
     const target = event.target;
    
     if(target.classList.contains('source-item')) {
         showOrHideSourcesModal();
-        getNewsBySource(target.id);    
+        getAndShowNews({ source: target.id });    
     }   
-};
-
-const getFilteredNews = () => {           
-    switchLoadingIndication();
-
-    getData(state).then((data) => {
-        showNews(data.articles);    
-        switchLoadingIndication();                    
-    }).catch((message) => {
-        throw Error(message);
-    });
 };
 
 const switchLoadingIndication = () => {
@@ -242,6 +235,19 @@ const hideOptions = (event) => {
     document.body.removeEventListener('click', hideOptions);
 };
 
+const handleGetNewsButton = () => {    
+    state.clicks++;
+    getAndShowNews(state);
+};
+
+async function getAndShowNews(criteria) {           
+    switchLoadingIndication();
+
+    const data = await getData(criteria);
+    
+    showNews(data.articles);    
+    switchLoadingIndication();
+};
 
 const mainPage = document.querySelector('#main-page');
 const countrySelector = document.querySelector('.county-selector');
@@ -258,11 +264,13 @@ const newsContainer = document.querySelector('.news-container');
 const newslist = document.querySelector('.main-wrapper');
 const optionsHumburger = document.querySelector('.options-humb');
 const sourcesHumburger = document.querySelector('.sources-humb');
+const cat = document.querySelector('.cat');
+const surpriseContainer = document.querySelector('.surprise');
 
 categorySelector.onclick = handleSelectorItem;
 countrySelector.onclick = handleSelectorItem;
 optionsContainer.onclick = handleSelector;
-getNewsButton.onclick = getFilteredNews;
+getNewsButton.onclick = handleGetNewsButton;
 newsBySourceButton.onclick = showOrHideSourcesModal;
 keyWordInput.onchange = handleKeyWordInput;
 sourcesModalCloseButton.onclick = showOrHideSourcesModal;
@@ -270,8 +278,8 @@ sourcesModal.onclick = handleSourceItem;
 sourcesHumburger.onclick = showOrHideSourcesModal;
 optionsHumburger.onclick = showOptions;
 
-fillSelector(countrySelector, countries,'country-item-template');
-fillSelector(categorySelector, categories,'category-item-template');
+fillSelector(countrySelector, countries, 'country-item-template');
+fillSelector(categorySelector, categories, 'category-item-template');
 
 getSources().then((data) => {
     fillSourcesModal(data.sources, sourcesModal);
@@ -279,4 +287,4 @@ getSources().then((data) => {
     throw Error(message);
 });
 
-getFilteredNews();
+getAndShowNews(state);
