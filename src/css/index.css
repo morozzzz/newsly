@@ -1,12 +1,12 @@
 @font-face {
-  font-family: "Less Sans";
-  src: url("../fonts/Less Sans/Less.otf");
+  font-family: "LessSans";
+  src: url("../fonts/Less_Sans/Less.otf");
 }
 
 @font-face {
-  font-family: "Less Sans";
+  font-family: "LessSans";
   font-weight: bold;
-  src: url("../fonts/Less Sans/Less-Bold.otf");
+  src: url("../fonts/Less_Sans/Less-Bold.otf");
 }
 
 body {
@@ -51,7 +51,7 @@ header {
 }
 
 h1 {
-  font-family: 'Less Sans';
+  font-family: 'LessSans';
   font-weight: bold;
   color: rgb(255, 240, 240);
   letter-spacing: 0.5em;
@@ -77,9 +77,6 @@ aside {
 }
 
 .search-options {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;      
   -webkit-box-orient: vertical;      
   -webkit-box-direction: normal;      
       -ms-flex-direction: column;      
@@ -109,7 +106,7 @@ aside {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  font-family: 'Less Sans';
+  font-family: 'LessSans';
   -webkit-box-shadow: 0 0 1em rgba(0,0,0,0.5);
           box-shadow: 0 0 1em rgba(0,0,0,0.5);
   color: rgb(253, 246, 231);
@@ -214,29 +211,29 @@ button:hover {
   height: 4em; 
   background-color: rgba(0, 0, 0, 0.315);
   border: none;  
-  width: 100%;
-  font-family: 'Less Sans';  
+  width: 85%;
+  font-family: 'LessSans';  
   font-size: 1em;    
   color: rgb(253, 246, 231);
   outline: none;
   padding: 0 1em;
   -webkit-box-shadow: 0 0 1em rgba(0,0,0,0.5);
-          box-shadow: 0 0 1em rgba(0,0,0,0.5);  
+          box-shadow: 0 0 1em rgba(0,0,0,0.5);            
 }
 
 .key-words-container input::-webkit-input-placeholder {
   color: rgb(253, 246, 231);
-  font-family: 'Less Sans'; 
+  font-family: 'LessSans'; 
 }
 
 .key-words-container input:-ms-input-placeholder {
   color: rgb(253, 246, 231);
-  font-family: 'Less Sans'; 
+  font-family: 'LessSans'; 
 }
 
 .key-words-container input::placeholder {
   color: rgb(253, 246, 231);
-  font-family: 'Less Sans'; 
+  font-family: 'LessSans'; 
 }
 
 .key-words-container input:hover {
@@ -255,7 +252,7 @@ button {
   border: none;  
   color: white;
   outline: none;
-  font-family: 'Less Sans';
+  font-family: 'LessSans';
 }
 
 .hidden {
@@ -280,7 +277,7 @@ button {
   padding: 1em;
   width: 70%;
   font-size: 1em;
-  height: 3.8em;
+  min-height: 3.8em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -367,7 +364,7 @@ button {
       -ms-flex-align: center;
           align-items: center;
   font-size: 1em;
-  font-family: 'Less Sans';
+  font-family: 'LessSans';
   cursor: pointer;
   -webkit-transform: scale(1);
           transform: scale(1);
@@ -414,7 +411,7 @@ main {
 
 .main-wrapper {
   overflow: auto;
-  height: calc(100vh - 6em);
+  height: calc(100vh - 5em);
   position: relative;
   width: 100%;  
 }
@@ -436,7 +433,7 @@ article {
       -ms-flex-align: start;
           align-items: flex-start;
   color: white;
-  font-family: 'Less Sans';
+  font-family: 'LessSans';
   padding-bottom: calc(100vw/100);   
 }
 
@@ -600,7 +597,7 @@ footer {
   display: -ms-flexbox;   
   display: flex;
   font-size: 1.1em;
-  font-family: "Less Sans"; 
+  font-family: "LessSans"; 
 }
 
 footer span {
@@ -708,7 +705,7 @@ footer span {
   }
 
   .main-wrapper {
-    min-height: calc(100vh - 6em);
+    min-height: calc(100vh - 5em);
     height: auto;
     overflow: visible;
   }
