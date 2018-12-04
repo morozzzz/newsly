@@ -1,12 +1,12 @@
-import { dateOptions }  from '../constants';
+import { dateOptions }  from '../../constants';
 
-class NewsContainer {
+class NewsListView {
     constructor(newsContainer, newsList) {
-        this.data = newsContainer;
-        this.newsList = newsList;
+        this.element = document.querySelector('.news-container');
+        this.container = document.querySelector('.main-wrapper');;
     } 
         
-    showNews = (articles) => {        
+    show = ({ articles }) => {        
         const template = document.getElementById('article-template');
         const templateContent = template.content;
         const title = templateContent.querySelector('h2');
@@ -22,8 +22,9 @@ class NewsContainer {
             const classList = node.classList;
             classList.contains('hidden') && classList.toggle('hidden');
         });
-    
-        this.data.innerHTML = '';
+        
+        this.reset();
+
         articles.forEach((article) => {
             const urlToImage = article.urlToImage;
             const articleAuthor = article.author;
@@ -37,15 +38,20 @@ class NewsContainer {
             link.href = article.url;
     
             const articleClone = document.importNode(templateContent, true);
-            this.data.appendChild(articleClone); 
+            
+            this.element.appendChild(articleClone); 
         });        
         
-        this.newsList.scrollTop = 0; 
+        this.container.scrollTop = 0; 
+    }
+
+    reset = () => {
+        this.element.innerHTML = '';        
     }
     
     switchLoadingIndication = () => {
-        this.data.classList.toggle('loading');
+        this.element.classList.toggle('loading');
     } 
 }
 
-export default NewsContainer;
+export default NewsListView;

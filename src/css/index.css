@@ -114,7 +114,7 @@ aside {
 }
 
 .label {
-  margin: 1em;
+  padding: 1em;
   height: 2em;
   font-size: 1em;  
   width: 90%;
@@ -132,7 +132,7 @@ aside {
   font-size: 1.2em;  
   font-weight: 900;
   content: '\f107';
-  right: 0;
+  right: 1em;
   position: absolute;  
 }
 
@@ -293,7 +293,7 @@ button {
   position: absolute;
   height: 100vh;
   width: 100%;
-  background-color: rgba(44, 29, 37, 0.698);
+  background-color: rgb(44, 29, 37);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -620,30 +620,47 @@ footer span {
   text-shadow: 0 0 1vw white;
 }
 
-.surprise {
+.error-popup-container {
   position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
-  z-index: -1;
-  overflow: hidden; 
-  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.cat {
-  position: absolute;
-  bottom: -6em;
-  height: 20em;
-  -webkit-transition: bottom 1s ease;
-  transition: bottom 1s ease;
+.error-popup {
+  min-height: 30vh;
+  min-width: 50vw;
+  background: rgb(70, 50, 50);
+  font-family: 'LessSans';  
+  font-size: 1em;    
+  color: rgb(253, 246, 231);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.1em;
+  line-height: 1.4em;
 }
 
-.hidden-cat {
-  bottom: -20em;
-  -webkit-transition: bottom 1s ease;
-  transition: bottom 1s ease;
-  
-  
+.error-message {
+  padding: 3vw;
+  height: 90%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
 }
+
+.close-error-popup {
+  margin: 1vw;  
+  padding: 1vw;
+  height: 10%;
+}
+
 @media screen and (max-width: 1500px)  {
   .sources-button {
     font-size: 0.9em;
@@ -795,6 +812,7 @@ footer span {
 
   .key-words-container input {
     padding: 0 1.6em;
+    width: 90%;
   }
 }
 
@@ -817,6 +835,10 @@ footer span {
   .description {
     width: 90%;    
   }
+
+  .key-words-container input {
+    width: 87%;
+  }
 }
 
 @media screen and (max-width: 530px)  {
@@ -828,6 +850,10 @@ footer span {
 @media screen and (max-width: 500px)  {
   .primary-data img {
     height: 12em;
+  }
+
+  .key-words-container input {
+    width: 85%;
   }
 }
 
@@ -856,5 +882,9 @@ footer span {
     height: 7em;
     width: 7em;
     margin: 0.3em;
+  }
+
+  .key-words-container input {
+    width: 84%;
   }
 }

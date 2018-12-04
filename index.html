@@ -18,8 +18,8 @@
             </header>
             <div class="main-body">
                 <aside class="search-options">                
-                    <div id="categories" class="option-list-container">
-                        <div class="label selected-categoty">Select Category</div>
+                    <div class="option-list-container">
+                        <div id="categories" class="label selected-categoty">Select Category</div>
                         <div class="option-list">
                             <ul class="category-selector hidden">
                                 <li id="unselected-category" class ='category-selector-item'>--none--</li>
@@ -29,10 +29,10 @@
                             </ul>                        
                         </div>
                     </div>
-                    <div id="countries" class="option-list-container">
-                        <div class="label selected-country">Select Country</div>
+                    <div class="option-list-container">
+                        <div id="countries" class="label selected-country">Select Country</div>
                         <div class="option-list">
-                            <ul class="county-selector hidden">
+                            <ul class="country-selector hidden">
                                 <li id="unselected-country" class ='country-selector-item'>--none--</li>
                                 <template id='country-item-template'>
                                     <li class ='country-selector-item'></li>
@@ -87,16 +87,16 @@
     <div class="sources-modal hidden">
         <div class="button-spacer"></div>
         <button class="close-modal-button">CLOSE</button>
-        <div class="sources-container">
-            <template id="source-item-template">
-                <div class="source-item"></div>
-            </template>
+        <div class="sources-container"></div>
+        <template id="source-item-template">
+            <div class="source-item"></div>
+        </template>
+    </div>    
+    <div class="error-popup-container hidden">
+        <div class="error-popup">
+            <div class="error-message"></div>
+            <button class="close-error-popup">CLOSE</button>
         </div>
-    </div>
-    <div class="surprise">
-        <img class="cat hidden-cat" src="./src/images/586d5be0df7621596b2ee693.png">
-    </div>
-    <script>
-    </script>
+    </div>        
 </body>
 </html>

@@ -10,12 +10,7 @@ module.exports = {
         publicPath: './dist/',
     },
     module: {
-        rules: [
-            {
-                test: /\.json$/,
-                type: 'javascript/auto',                
-                loader: 'antinumber-loader',
-            },
+        rules: [            
             {
                 test: /\.m?js$/,
                 exclude: /(node_modules|bower_components)/,
@@ -39,12 +34,7 @@ module.exports = {
                 use: [ 'url-loader' ],
             },           
         ]
-    },
-    resolveLoader: {
-        alias: {
-            'antinumber-loader': path.join(__dirname, './src/antinumber-loader')
-        }
-    },  
+    },    
     devServer: {
         compress: true,
         openPage: 'webpack-dev-server/index.html'
